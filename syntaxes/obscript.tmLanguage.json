@@ -1,0 +1,435 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "TES4 Obscript",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#blocks"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#conditionals"
+		},
+		{
+			"include": "#vartypes"
+		},
+		{
+			"include": "#reserved-cs"
+		},
+		{
+			"include": "#reserved-obse"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"begin": "(^\\s+)?(?=;)",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.comment.leading.obscript"
+						}
+					},
+					"end": "(?=$)",
+					"patterns": [
+						{
+							"name": "comment.line.semicolon.obscript",
+							"begin": "(;)",
+							"beginCaptures": {
+								"0": {
+									"name": "punctuation.definition.comment.obscript"
+								}
+							},
+							"end": "(?=$)"
+						}
+					]
+				}
+			]
+		},
+		"blocks": {
+			"patterns": [
+				{
+					"begin": "(?i)(^(\\s+)?)(?=(begin|end)\\b)",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.block.leading.obscript"
+						}
+					},
+					"end": "(?=$)",
+					"patterns": [
+						{
+							"name": "storage.type.function.obscript",
+							"match": "(?i)(begin|end)"
+						},
+						{
+							"name": "storage.type.function.obscript",
+							"match": "(?i)_?(GameMode|MenuMode|OnActivate|OnActorEquip|OnActorUnequip|OnAdd|OnAlarm|OnAlarmVictim|OnDeath|OnDrop|OnEquip|OnHit|OnHitWith|OnKnockout|OnLoad|OnMagicEffectHit|OnMurder|OnPackageChange|OnPackageDone|OnPackageStart|OnReset|OnSell|OnStartCombat|OnTrigger|OnTriggerActor|OnTriggerMob|OnUnequip|ScriptEffectFinish|ScriptEffectStart|ScriptEffectUpdate|Function)"
+						}
+					]
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.obscript",
+					"match": "(?i)\\b(scn|scriptname|set|let|call|return)\\b"
+				},
+				{
+					"name": "support.variable.obscript",
+					"match": "(?i)\\b(player|playerRef)\\b"
+				}
+			]
+		},
+		"conditionals": {
+			"patterns": [
+				{
+					"name": "keyword.control.conditional.obscript",
+					"match": "(?i)\\b(if|else|elseif|endif|while|foreach|loop|break|continue|label|goto)\\b"
+				}
+			]
+		},
+		"vartypes": {
+			"patterns": [
+				{
+					"name": "support.type.primitive.obscript",
+					"match": "(?i)\\b(short|long|float|ref|string_var|array_var)\\b"
+				}
+			]
+		},
+		"reserved-cs": {
+			"patterns": [
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(Activate|AddAchievement|AddFlames|AddItem|AddScriptPackage|AddSpell|AddTopic|AdvancePCLevel|AdvancePCSkill|Autosave|CanHaveFlames|CanPayCrimeGold|Cast|ClearOwnership|CloseCurrentOblivionGate|CloseOblivionGate|CompleteQuest|CreateFullActorCopy|DeleteFullActorCopy|Disable|DisableLinkedPathPoints|DisablePlayerControls|Dispel|DispelAllSpells|Drop)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(DropMe|DuplicateAllItems|DuplicateNPCStats|Enable|EnableFastTravel|EnableLinkedPathPoints|EnablePlayerControls|EquipItem|EssentialDeathReload|EvaluatePackage|ForceActorValue|ForceCloseOblivionGate|ForceFlee|ForceTakeCover|ForceWeather|GetActionRef|GetActorValue|GetAlarmed|GetAmountSoldStolen|GetAngle|GetArmorRating|GetArmorRatingUpperBody|GetAttacked|GetBarterGold|GetBaseActorValue)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetButtonPressed|GetClassDefaultMatch|GetClothingValue|GetCombatTarget|GetContainer|GetCrime|GetCrimeGold|GetCrimeKnown|GetCurrentAIPackage|GetCurrentAIProcedure|GetCurrentTime|GetCurrentWeatherPercent|GetDayOfWeek|GetDead|GetDeadCount|GetDestroyed|GetDetected|GetDetectionLevel|GetDisabled|GetDisposition|GetDistance|GetDoorDefaultOpen|GetEquipped|GetFactionRank|GetFactionRankDifference)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetFactionReaction|GetFatiguePercentage|GetForceRun|GetForceSneak|GetFriendHit|GetFurnitureMarkerID|GetGameSetting|GetGlobalValue|GetGold|GetHeadingAngle|GetIdleDoneOnce|GetIgnoreFriendlyHits|GetInCell|GetInCellParam|GetInFaction|GetInSameCell|GetInvestmentGold|GetInWorldspace|GetIsAlerted|GetIsClass|GetIsClassDefault|GetIsCreature|GetIsCurrentPackage|GetIsCurrentWeather|GetIsGhost)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetIsID|GetIsPlayableRace|GetIsPlayerBirthsign|GetIsRace|GetIsReference|GetIsSex|GetIsUsedItem|GetIsUsedItemType|GetItemCount|GetKnockedState|GetLevel|GetLocked|GetLockLevel|GetLOS|GetNoRumors|GetOffersServicesNow|GetOpenState|GetPackageTarget|GetParentRef|GetPCExpelled|GetPCFactionAttack|GetPCFactionMurder|GetPCFactionSteal|GetPCFactionSubmitAuthority|GetPCFame)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetPCInFaction|GetPCInfamy|GetPCIsClass|GetPCIsRace|GetPCIsSex|GetPCMiscStat|GetPCSleepHours|GetPersuasionNumber|GetPlayerControlsDisabled|GetPlayerHasLastRiddenHorse|GetPlayerInSEWorld|GetPos|GetQuestRunning|GetQuestVariable|GetRandomPercent|GetRestrained|GetScale|GetScriptVariable|GetSecondsPassed|GetSelf|GetShouldAttack|GetSitting|GetSleeping|GetStage|GetStageDone)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetStartingAngle|GetStartingPos|GetTalkedToPC|GetTalkedToPCParam|GetTimeDead|GetTotalPersuasionNumber|GetTrespassWarningLevel|GetUnconscious|GetUsedItemActivate|GetUsedItemLevel|GetVampire|GetWalkSpeed|GetWeaponAnimType|GetWeaponSkillType|GetWindSpeed|GoToJail|HasFlames|HasMagicEffect|HasVampireFed|IsActionRef|IsActor|IsActorAVictim|IsActorDetected|IsActorEvil|IsActorsAIOff)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(IsActorUsingATorch|IsAnimPlaying|IsCellOwner|IsCloudy|IsContinuingPackagePCNear|IsCurrentFurnitureObj|IsCurrentFurnitureRef|IsEssential|IsFacingUp|IsGuard|IsHorseStolen|IsIdlePlaying|IsInCombat|IsInDangerousWater|IsInInterior|IsInMyOwnedCell|IsLeftUp|IsOwner|IsPCAMurderer|IsPCSleeping|IsPlayerInJail|IsPlayerMovingIntoNewSpace|IsPlayersLastRiddenHorse|IsPleasant|IsRaining)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(IsRidingHorse|IsRunning|IsShieldOut|IsSneaking|IsSnowing|IsSpellTarget|IsSwimming|IsTalking|IsTimePassing|IsTorchOut|IsTrespassing|IsTurnArrest|IsWaiting|IsWeaponOut|IsXBox|IsYielding|Kill|KillAllActors|Lock|Look|LoopGroup|MenuMode|Function|Message|MessageBox|ModActorValue)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(ModAmountSoldStolen|ModBarterGold|ModCrimeGold|ModDisposition|ModFactionRank|ModFactionReaction|ModPCAttribute|ModPCFame|ModPCInfamy|ModPCMiscStat|ModPCSkill|ModScale|MoveTo|MoveToMarker|PayFine|PayFineThief|PickIdle|PlaceAtMe|PlayBink|PlayGroup|PlayMagicEffectVisuals|PlayMagicShaderVisuals|PlaySound|PlaySound3D|PositionCell)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(PositionWorld|PreloadMagicEffect|PurgeCellBuffers|PushActorAway|RefreshTopicList|ReleaseWeatherOverride|RemoveAllItems|RemoveFlames|RemoveItem|RemoveMe|RemoveScriptPackage|RemoveSpell|Reset3DState|ResetFallDamageTimer|ResetHealth|ResetInterior|Resurrect|Rotate|SameFaction|SameFactionAsPC|SameRace|SameRaceAsPC|SameSex|SameSexAsPC|Say)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SayTo|ScriptEffectElapsedSeconds|SelectPlayerSpell|SendTrespassAlarm|SetActorAlpha|SetActorFullName|SetActorRefraction|SetActorsAI|SetActorValue|SetAlert|SetAllReachable|SetAllVisible|SetAngle|SetAtStart|SetBarterGold|SetCellFullName|SetCellOwnership|SetCellPublicFlag|SetClass|SetCombatStyle|SetCrimeGold|SetDestroyed|SetDoorDefaultOpen|SetEssential|SetFactionRank)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetFactionReaction|SetForceRun|SetForceSneak|SetGhost|SetIgnoreFriendlyHits|SetInCharGen|SetInvestmentGold|SetItemValue|SetLevel|SetNoAvoidance|SetNoRumors|SetOpenState|SetOwnership|SetPackDuration|SetPCExpelled|SetPCFactionAttack|SetPCFactionMurder|SetPCFactionSteal|SetPCFactionSubmitAuthority|SetPCFame|SetPCInfamy|SetPCSleepHours|SetPlayerInSEWorld|SetPos|SetQuestObject)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetRestrained|SetRigidBodyMass|SetScale|SetSceneIsComplex|SetShowQuestItems|SetSize|SetStage|SetUnconscious|SetWeather|ShowBirthsignMenu|ShowClassMenu|ShowDialogSubtitles|ShowEnchantment|ShowMap|ShowRaceMenu|ShowSpellMaking|SkipAnim|StartCombat|StartConversation|StartQuest|StopCombat|StopCombatAlarmOnActor|StopLook|StopMagicEffectVisuals|StopMagicShaderVisuals)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(StopQuest|StopWaiting|StreamMusic|This|ToggleActorsAI|TrapUpdate|TriggerHitShader|UnequipItem|Unlock|VampireFeed|Wait|WakeUpPC|WhichServiceMenu|Yield)\\b"
+				}
+			]
+		},
+		"reserved-obse": {
+			"patterns": [
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(Abs|ACos|Activate2|ActorValueToCode|ActorValueToString|ActorValueToStringC|AddEffectItem|AddEffectItemC|AddFullEffectItem|AddFullEffectItemC|AddItemNS|AddMagicEffectCounter|AddMagicEffectCounterC|AddSpellNS|AddToLeveledList|AHammerKey|Algohol|AnimPathIncludes|AppendToName|Ar_Append|Ar_BadNumericIndex|Ar_BadStringIndex|Ar_Construct|Ar_Copy|Ar_CustomSort)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(Ar_DeepCopy|Ar_Dump|Ar_DumpID|Ar_Erase|Ar_Find|Ar_First|Ar_HasKey|Ar_Insert|Ar_InsertRange|Ar_Keys|Ar_Last|Ar_List|Ar_Map|Ar_Next|Ar_Null|Ar_Prev|Ar_Range|Ar_Resize|Ar_Size|Ar_Sort|Ar_SortAlpha|AsciiToChar|ASin|ATan|ATan2)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(CalcLeveledItem|CalcLevItemNR|CalcLevItems|Call|CanCastPower|CanCorpseCheck|CanFastTravelFromWorld|CanTravelToMapMarker|Ceil|CharToASCII|ClearActiveQuest|ClearHotKey|ClearLeveledList|ClearOwnership_T|ClearPlayersLastRiddenHorse|ClickMenuButton|CloneForm|CloseAllMenus|CloseTextInput|CompareFemaleBipedPath|CompareFemaleGroundPath|CompareFemaleIconPath|CompareIconPath|CompareMaleBipedPath|CompareMaleGroundPath)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(CompareMaleIconPath|CompareModelPath|CompareName|CompareNames|CompareScripts|Con_CAL|Con_GetINISetting|Con_HairTint|Con_LoadGame|Con_ModWaterShader|Con_outputLocalMapPictures|Con_PlayerSpellBook|Con_QuitGame|Con_RefreshINI|Con_RunMemoryPass|Con_Save|Con_SaveINI|Con_SetCameraFOV|Con_SetClipDist|Con_SetFog|Con_SetGameSetting|Con_SetGamma|Con_SetHDRParam|Con_SetImageSpaceGlow|Con_SetINISetting)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(Con_SetSkyParam|Con_SetTargetRefraction|Con_SetTargetRefractionFire|Con_SexChange|Con_Show1stPerson|Con_TCL|Con_TFC|Con_TGM|Con_ToggleAI|Con_ToggleCombatAI|Con_ToggleDetection|Con_ToggleMapMarkers|Con_ToggleMenus|Con_WaterDeepColor|Con_WaterReflectionColor|Con_WaterShallowColor|CopyAllEffectItems|CopyEyes|CopyFemaleBipedPath|CopyFemaleGroundPath|CopyFemaleIconPath|CopyHair|CopyIconPath|CopyIR|CopyMaleBipedPath)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(CopyMaleGroundPath|CopyMaleIconPath|CopyModelPath|CopyName|CopyNthEffectItem|Cos|Cosh|CreateTempRef|CreatureHasNoHead|CreatureHasNoLeftArm|CreatureHasNoMovement|CreatureHasNoRightArm|CreatureNoCombatInWater|CreatureUsesWeaponAndShield|DebugPrint|DeleteFromInputText|DeleteReference|DisableControl|DisableKey|DisableMouse|DispelNthActiveEffect|EnableControl|EnableKey|EnableMouse|EquipItem2)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(EquipItem2NS|EquipItemNS|EquipItemSilent|EquipMe|Eval|Exp|FactionHasSpecialCombat|FemaleBipedPathIncludes|FemaleGroundPathIncludes|FemaleIconPathIncludes|FileExists|Floor|Fmod|ForceColumnVector|ForceRowVector|GenerateIdentityMatrix|GenerateRotationMatrix|GenerateZeroMatrix|GetActiveEffectCasters|GetActiveEffectCodes|GetActiveEffectCount|GetActiveMenuFilter|GetActiveMenuMode|GetActiveMenuObject|GetActiveMenuRef)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetActiveMenuSelection|GetActiveQuest|GetActiveUIComponentFullName|GetActiveUIComponentID|GetActiveUIComponentName|GetActorAlpha|GetActorBaseLevel|GetActorLightAmount|GetActorMaxLevel|GetActorMinLevel|GetActorPackages|GetActorSoulLevel|GetActorValueC|GetAlchMenuApparatus|GetAlchMenuIngredient|GetAlchMenuIngredientCount|GetAllies|GetAllModLocalData|GetAltControl|GetAltControl2|GetApparatusType|GetArmorAR|GetArmorType|GetArrayVariable|GetArrowProjectileBowEnchantment)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetArrowProjectileEnchantment|GetArrowProjectilePoison|GetAttackDamage|GetAVForBaseActor|GetAVMod|GetBarterItem|GetBarterItemQuantity|GetBaseActorValueC|GetBaseAV2|GetBaseAV2C|GetBaseItems|GetBaseObject|GetBipedIconPath|GetBipedModelPath|GetBipedSlotMask|GetBirthsignSpells|GetBookCantBeTaken|GetBookIsScroll|GetBookLength|GetBookSkillTaught|GetBookText|GetBoundingBox|GetBoundingRadius|GetCalcAllLevels|GetCalcEachInCount)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetCallingScript|GetCellBehavesAsExterior|GetCellChanged|GetCellClimate|GetCellDetachTime|GetCellLighting|GetCellMusicType|GetCellNorthRotation|GetCellResetHours|GetCellWaterType|GetChanceNone|GetClass|GetClassAttribute|GetClassMenuHighlightedClass|GetClassMenuSelectedClass|GetClassSkill|GetClassSkills|GetClassSpecialization|GetClimateHasMasser|GetClimateHasSecunda|GetClimateMoonPhaseLength|GetClimateSunriseBegin|GetClimateSunriseEnd|GetClimateSunsetBegin|GetClimateSunsetEnd)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetClimateVolatility|GetCloseSound|GetCombatSpells|GetCombatStyle|GetCombatStyleAcrobaticsDodgeChance|GetCombatStyleAttackChance|GetCombatStyleAttackDuringBlockMult|GetCombatStyleAttackNotUnderAttackMult|GetCombatStyleAttackSkillModBase|GetCombatStyleAttackSkillModMult|GetCombatStyleAttackUnderAttackMult|GetCombatStyleBlockChance|GetCombatStyleBlockNotUnderAttackMult|GetCombatStyleBlockSkillModBase|GetCombatStyleBlockSkillModMult|GetCombatStyleBlockUnderAttackMult|GetCombatStyleBuffStandoffDist|GetCombatStyleDodgeBackNotUnderAttackMult|GetCombatStyleDodgeBackTimerMax|GetCombatStyleDodgeBackTimerMin|GetCombatStyleDodgeBackUnderAttackMult|GetCombatStyleDodgeChance|GetCombatStyleDodgeFatigueModBase|GetCombatStyleDodgeFatigueModMult|GetCombatStyleDodgeFWAttackingMult)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetCombatStyleDodgeFWNotAttackingMult|GetCombatStyleDodgeFWTimerMax|GetCombatStyleDodgeFWTimerMin|GetCombatStyleDodgeLRChance|GetCombatStyleDodgeLRTimerMax|GetCombatStyleDodgeLRTimerMin|GetCombatStyleDodgeNotUnderAttackMult|GetCombatStyleDodgeUnderAttackMult|GetCombatStyleEncumberedSpeedModBase|GetCombatStyleEncumberedSpeedModMult|GetCombatStyleFleeingDisabled|GetCombatStyleGroupStandoffDist|GetCombatStyleH2HBonusToAttack|GetCombatStyleHoldTimerMax|GetCombatStyleHoldTimerMin|GetCombatStyleIdleTimerMax|GetCombatStyleIdleTimerMin|GetCombatStyleIgnoreAlliesInArea|GetCombatStyleKOBonusToAttack|GetCombatStyleKOBonusToPowerAttack|GetCombatStyleMeleeAlertOK|GetCombatStylePowerAttackChance|GetCombatStylePowerAttackFatigueModBase|GetCombatStylePowerAttackFatigueModMult|GetCombatStylePrefersRanged)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetCombatStyleRangedStandoffDist|GetCombatStyleRangeMaxMult|GetCombatStyleRangeOptimalMult|GetCombatStyleRejectsYields|GetCombatStyleRushAttackChance|GetCombatStyleRushAttackDistMult|GetCombatStyleStaggerBonusToAttack|GetCombatStyleStaggerBonusToPowerAttack|GetCombatStyleSwitchDistMelee|GetCombatStyleSwitchDistRanged|GetCombatStyleWillYield|GetCompletedQuests|GetContainerMenuView|GetContainerRespawns|GetControl|GetCreatureBaseScale|GetCreatureCombatSkill|GetCreatureFlies|GetCreatureMagicSkill|GetCreatureModelPaths|GetCreatureReach|GetCreatureSoulLevel|GetCreatureSound|GetCreatureSoundBase|GetCreatureStealthSkill)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetCreatureSwims|GetCreatureType|GetCreatureWalks|GetCrosshairRef|GetCurrentCharge|GetCurrentClimateID|GetCurrentEditorPackage|GetCurrentEventName|GetCurrentHealth|GetCurrentPackage|GetCurrentPackageProcedure|GetCurrentQuests|GetCurrentRegion|GetCurrentRegions|GetCurrentScript|GetCurrentSoulLevel|GetCurrentWeatherID|GetCursorPos|GetDebugSelection|GetDescription|GetDoorTeleportRot|GetDoorTeleportX|GetDoorTeleportY|GetDoorTeleportZ|GetEditorID)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetEditorSize|GetEnchantment|GetEnchantmentCharge|GetEnchantmentCost|GetEnchantmentType|GetEnchMenuBaseItem|GetEnchMenuEnchItem|GetEnchMenuSoulgem|GetEquipmentSlot|GetEquipmentSlotMask|GetEquippedCurrentCharge|GetEquippedCurrentHealth|GetEquippedItems|GetEquippedObject|GetEquippedTorchTimeLeft|GetEquippedWeaponPoison|GetEyes|GetFallTimer|GetFirstRef|GetFirstRefInCell|GetFollowers|GetFormFromMod|GetFormIDString|GetFPS|GetFullGoldValue)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetGameDifficulty|GetGameLoaded|GetGameRestarted|GetGodMode|GetGoldValue|GetGridsToLoad|GetHair|GetHairColor|GetHidesAmulet|GetHidesRings|GetHighActors|GetHorse|GetHotKeyItem|GetIconPath|GetIgnoresResistance|GetIngredient|GetIngredientChance|GetInputText|GetInventoryObject|GetInvRefsForItem|GetItems|GetKeyName|GetKeyPress|GetLastCreatedPotion|GetLastCreatedSpell)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetLastEnchantedItem|GetLastSigilStoneCreatedItem|GetLastSigilStoneEnchantedItem|GetLastTransactionItem|GetLastTransactionQuantity|GetLastUniqueCreatedPotion|GetLastUsedSigilStone|GetLeveledSpells|GetLevItemByLevel|GetLevItemIndexByForm|GetLevItemIndexByLevel|GetLightDuration|GetLightRadius|GetLightRGB|GetLinkedDoor|GetLocalGravity|GetLoopSound|GetMagicEffectAreaSound|GetMagicEffectAreaSoundC|GetMagicEffectBarterFactor|GetMagicEffectBaseCost|GetMagicEffectBoltSound|GetMagicEffectBoltSoundC|GetMagicEffectCastingSound|GetMagicEffectCastingSoundC)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetMagicEffectChars|GetMagicEffectCharsC|GetMagicEffectCode|GetMagicEffectCounters|GetMagicEffectCountersC|GetMagicEffectEnchantFactor|GetMagicEffectEnchantShader|GetMagicEffectEnchantShaderC|GetMagicEffectHitShader|GetMagicEffectHitShaderC|GetMagicEffectHitSound|GetMagicEffectHitSoundC|GetMagicEffectIcon|GetMagicEffectIconC|GetMagicEffectLight|GetMagicEffectLightC|GetMagicEffectModel|GetMagicEffectModelC|GetMagicEffectName|GetMagicEffectNameC|GetMagicEffectNumCounters|GetMagicEffectNumCountersC|GetMagicEffectOtherActorValue|GetMagicEffectOtherActorValueC|GetMagicEffectProjectileSpeed)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetMagicEffectResistValue|GetMagicEffectResistValueC|GetMagicEffectSchool|GetMagicEffectUsedObject|GetMagicEffectUsedObjectC|GetMagicItemEffectCount|GetMagicItemType|GetMagicProjectileSpell|GetMapMarkers|GetMapMarkerType|GetMapMenuMarkerName|GetMapMenuMarkerRef|GetMaxAV|GetMenuFloatValue|GetMenuHasTrait|GetMenuStringValue|GetMerchantContainer|GetMessageBoxType|GetMiddleHighActors|GetModelPath|GetModIndex|GetModLocalData|GetMouseButtonPress|GetMouseButtonsSwapped|GetName)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetNextRef|GetNthActiveEffectActorValue|GetNthActiveEffectBoundItem|GetNthActiveEffectCaster|GetNthActiveEffectCode|GetNthActiveEffectData|GetNthActiveEffectDuration|GetNthActiveEffectEnchantObject|GetNthActiveEffectMagicItem|GetNthActiveEffectMagicItemIndex|GetNthActiveEffectMagnitude|GetNthActiveEffectSummonRef|GetNthActiveEffectTimeElapsed|GetNthChildRef|GetNthDetectedActor|GetNthEffectItem|GetNthEffectItemActorValue|GetNthEffectItemArea|GetNthEffectItemCode|GetNthEffectItemDuration|GetNthEffectItemMagnitude|GetNthEffectItemName|GetNthEffectItemRange|GetNthEffectItemScript|GetNthEffectItemScriptName)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetNthEffectItemScriptSchool|GetNthEffectItemScriptVisualEffect|GetNthExplicitRef|GetNthFaction|GetNthFactionRankName|GetNthFollower|GetNthLevItem|GetNthLevItemCount|GetNthLevItemLevel|GetNthMagicEffectCounter|GetNthMagicEffectCounterC|GetNthModName|GetNthPackage|GetNthPlayerSpell|GetNthRaceBonusSkill|GetNthRaceSpell|GetNthSpell|GetNumChildRefs|GetNumDetectedActors|GetNumericINISetting|GetNumExplicitRefs|GetNumFactions|GetNumFollowers|GetNumItems|GetNumKeysPressed)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetNumLevItems|GetNumLoadedPlugins|GetNumMouseButtonsPressed|GetNumPackages|GetNumRanks|GetNumRefs|GetNumRefsInCell|GetObjectCharge|GetObjectHealth|GetObjectType|GetOblivionDirectory|GetOBSERevision|GetOBSEVersion|GetOpenKey|GetOpenSound|GetOwner|GetOwningFactionRequiredRank|GetPackageAllowFalls|GetPackageAllowSwimming|GetPackageAlwaysRun|GetPackageAlwaysSneak|GetPackageArmorUnequipped|GetPackageContinueIfPCNear|GetPackageData|GetPackageDefensiveCombat)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetPackageLocationData|GetPackageLockDoorsAtEnd|GetPackageLockDoorsAtLocation|GetPackageLockDoorsAtStart|GetPackageMustComplete|GetPackageMustReachLocation|GetPackageNoIdleAnims|GetPackageOffersServices|GetPackageOncePerDay|GetPackageScheduleData|GetPackageSkipFalloutBehavior|GetPackageTargetData|GetPackageUnlockDoorsAtEnd|GetPackageUnlockDoorsAtLocation|GetPackageUnlockDoorsAtStart|GetPackageUseHorse|GetPackageWeaponsUnequipped|GetParentCell|GetParentCellOwner|GetParentCellOwningFactionRequiredRank|GetParentCellWaterHeight|GetParentWorldspace|GetPathNodeLinkedRef|GetPathNodePos|GetPathNodesInRadius)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetPathNodesInRect|GetPCAttributeBonus|GetPCAttributeBonusC|GetPCLastDroppedItem|GetPCLastDroppedItemRef|GetPCMajorSkillUps|GetPCMovementSpeedModifier|GetPCSpellEffectivenessModifier|GetPCTrainingSessionsUsed|GetPlayerBirthsign|GetPlayerSkillAdvances|GetPlayerSkillAdvancesC|GetPlayerSkillUse|GetPlayerSkillUseC|GetPlayersLastActivatedLoadDoor|GetPlayersLastRiddenHorse|GetPlayerSpell|GetPlayerSpellCount|GetPluginVersion|GetProcessLevel|GetProjectile|GetProjectileDistanceTraveled|GetProjectileLifetime|GetProjectileSource|GetProjectileSpeed)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetProjectileType|GetQuality|GetQuantityMenuCurrentQuantity|GetQuantityMenuItem|GetQuantityMenuMaximumQuantity|GetRace|GetRaceAttribute|GetRaceAttributeC|GetRaceDefaultHair|GetRaceEyes|GetRaceHairs|GetRaceReaction|GetRaceScale|GetRaceSkillBonus|GetRaceSkillBonusC|GetRaceSpellCount|GetRaceVoice|GetRaceWeight|GetRawFormIDString|GetRefCount|GetRefVariable|GetRequiredSkillExp|GetRider|GetScript|GetScriptActiveEffectIndex)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetSelectedSpells|GetServicesMask|GetSigilStoneUses|GetSkillGoverningAttribute|GetSkillGoverningAttributeC|GetSkillSpecialization|GetSkillUseIncrement|GetSkillUseIncrementC|GetSoulGemCapacity|GetSoulLevel|GetSoundPlaying|GetSourceModIndex|GetSpecialAnims|GetSpellAreaEffectIgnoresLOS|GetSpellCount|GetSpellDisallowAbsorbReflect|GetSpellEffectiveness|GetSpellExplodesWithNoTarget|GetSpellHostile|GetSpellImmuneToSilence|GetSpellMagickaCost|GetSpellMasteryLevel|GetSpellPCStart|GetSpells|GetSpellSchool)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetSpellScriptEffectAlwaysApplies|GetSpellType|GetStringGameSetting|GetStringINISetting|GetTargets|GetTelekinesisRef|GetTeleportCell|GetTeleportCellName|GetTerrainHeight|GetTextInputControlPressed|GetTextInputCursorPos|GetTexturePath|GetTileChildren|GetTileTraits|GetTimeLeft|GetTotalActiveEffectMagnitude|GetTotalActiveEffectMagnitudeC|GetTotalAEAbilityMagnitude|GetTotalAEAbilityMagnitudeC|GetTotalAEAlchemyMagnitude|GetTotalAEAlchemyMagnitudeC|GetTotalAEAllSpellsMagnitude|GetTotalAEAllSpellsMagnitudeC|GetTotalAEDiseaseMagnitude|GetTotalAEDiseaseMagnitudeC)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetTotalAEEnchantmentMagnitude|GetTotalAEEnchantmentMagnitudeC|GetTotalAELesserPowerMagnitude|GetTotalAELesserPowerMagnitudeC|GetTotalAENonAbilityMagnitude|GetTotalAENonAbilityMagnitudeC|GetTotalAEPowerMagnitude|GetTotalAEPowerMagnitudeC|GetTotalAESpellMagnitude|GetTotalAESpellMagnitudeC|GetTotalPCAttributeBonus|GetTrainerLevel|GetTrainerSkill|GetTransactionInfo|GetTravelHorse|GetUsedPowers|GetUserTime|GetVariable|GetVelocity|GetVerticalVelocity|GetWaterShader|GetWeaponReach|GetWeaponSpeed|GetWeaponType|GetWeatherClassification)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(GetWeatherCloudSpeedLower|GetWeatherCloudSpeedUpper|GetWeatherColor|GetWeatherFogDayFar|GetWeatherFogDayNear|GetWeatherFogNightFar|GetWeatherFogNightNear|GetWeatherHDRValue|GetWeatherLightningFrequency|GetWeatherOverride|GetWeatherSunDamage|GetWeatherSunGlare|GetWeatherTransDelta|GetWeatherWindSpeed|GetWeight|GetWorldSpaceParentWorldSpace|GlobalVariableExists|HammerKey|HasBeenPickedUp|HasEffectShader|HasLowLevelProcessing|HasModel|HasName|HasNoPersuasion|HasSpell)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(HasVariable|HoldKey|IncrementPlayerSkillUse|IncrementPlayerSkillUseC|InsertInInputText|IsActivatable|IsActivator|IsActorRespawning|IsAlchemyItem|IsAmmo|IsAnimGroupPlaying|IsApparatus|IsArmor|IsAttacking|IsAutomaticDoor|IsBarterMenuActive|IsBipedIconPathValid|IsBipedModelPathValid|IsBlocking|IsBook|IsCasting|IsCellPublic|IsClassAttribute|IsClassAttributeC|IsClassSkill)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(IsClassSkillC|IsClonedForm|IsClothing|IsConsoleOpen|IsContainer|IsControl|IsControlDisabled|IsControlPressed|IsCreature|IsCreatureBiped|IsDigit|IsDodging|IsDoor|IsEquipped|IsFactionEvil|IsFactionHidden|IsFemale|IsFlora|IsFlying|IsFood|IsFormValid|IsFurniture|IsGameMessageBox|IsGlobalCollisionDisabled|IsHarvested)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(IsHiddenDoor|IsIconPathValid|IsInAir|IsIngredient|IsInOblivion|IsJumping|IsKey|IsKeyDisabled|IsKeyPressed|IsKeyPressed2|IsKeyPressed3|IsLetter|IsLight|IsLightCarriable|IsLoadDoor|IsMagicEffectCanRecover|IsMagicEffectCanRecoverC|IsMagicEffectDetrimental|IsMagicEffectDetrimentalC|IsMagicEffectForEnchanting|IsMagicEffectForEnchantingC|IsMagicEffectForSpellmaking|IsMagicEffectForSpellmakingC|IsMagicEffectHostile|IsMagicEffectMagnitudePercent)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(IsMagicEffectMagnitudePercentC|IsMagicEffectOnSelfAllowed|IsMagicEffectOnSelfAllowedC|IsMagicEffectOnTargetAllowed|IsMagicEffectOnTargetAllowedC|IsMagicEffectOnTouchAllowed|IsMagicEffectOnTouchAllowedC|IsMagicItemAutoCalc|IsMapMarkerVisible|IsMinimalUseDoor|IsModelPathValid|IsModLoaded|IsMovingBackward|IsMovingForward|IsMovingLeft|IsMovingRight|IsNthActiveEffectApplied|IsNthEffectItemScripted|IsNthEffectItemScriptHostile|IsOblivionGate|IsOblivionInterior|IsOblivionWorld|IsOffLimits|IsOnGround|IsPathNodeDisabled)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(IsPCLevelOffset|IsPersistent|IsPlayable|IsPlayable2|IsPluginInstalled|IsPoison|IsPowerAttacking|IsPrintable|IsPunctuation|IsQuestCompleted|IsQuestItem|IsRaceBonusSkill|IsRaceBonusSkillC|IsRacePlayable|IsRecoiling|IsRefDeleted|IsReference|IsRefEssential|IsScripted|IsSigilStone|IsSoulGem|IsSpellHostile|IsStaggered|IsSummonable|IsTaken)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(IsTextInputInUse|IsThirdPerson|IsTurningLeft|IsTurningRight|IsUnderWater|IsUppercase|IsWeapon|LeftShift|Let|LoadGameEx|Log|Log10|LogicalAnd|LogicalNot|LogicalOr|LogicalXor|MagicEffectCodeFromChars|MagicEffectFromChars|MagicEffectFromCode|MagicEffectFXPersists|MagicEffectFXPersistsC|MagicEffectHasNoArea|MagicEffectHasNoAreaC|MagicEffectHasNoDuration|MagicEffectHasNoDurationC)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(MagicEffectHasNoHitEffect|MagicEffectHasNoHitEffectC|MagicEffectHasNoIngredient|MagicEffectHasNoIngredientC|MagicEffectHasNoMagnitude|MagicEffectHasNoMagnitudeC|MagicEffectUsesArmor|MagicEffectUsesArmorC|MagicEffectUsesAttribute|MagicEffectUsesAttributeC|MagicEffectUsesCreature|MagicEffectUsesCreatureC|MagicEffectUsesOtherActorValue|MagicEffectUsesOtherActorValueC|MagicEffectUsesSkill|MagicEffectUsesSkillC|MagicEffectUsesWeapon|MagicEffectUsesWeaponC|MagicItemHasEffect|MagicItemHasEffectCode|MagicItemHasEffectCount|MagicItemHasEffectCountCode|MagicItemHasEffectItemScript|MaleBipedPathIncludes|MaleGroundPathIncludes)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(MaleIconPathIncludes|MatchPotion|MatrixAdd|MatrixDeterminant|MatrixInvert|MatrixMultiply|MatrixRREF|MatrixScale|MatrixSubtract|MatrixTrace|MatrixTranspose|MenuHoldKey|MenuReleaseKey|MenuTapKey|MessageBoxEx|MessageEx|ModActorValue2|ModActorValueC|ModArmorAR|ModAttackDamage|ModAVMod|ModCurrentCharge|ModEnchantmentCharge|ModEnchantmentCost|ModEquippedCurrentCharge)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(ModEquippedCurrentHealth|ModFemaleBipedPath|ModFemaleGroundPath|ModFemaleIconPath|ModGoldValue|ModIconPath|ModLocalDataExists|ModMaleBipedPath|ModMaleGroundPath|ModMaleIconPath|ModModelPath|ModName|ModNthActiveEffectMagnitude|ModNthEffectItemArea|ModNthEffectItemDuration|ModNthEffectItemMagnitude|ModNthEffectItemScriptName|ModObjectCharge|ModObjectHealth|ModPCMovementSpeed|ModPCSpellEffectiveness|ModPlayerSkillExp|ModPlayerSkillExpC|ModQuality|ModSigilStoneUses)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(ModSpellMagickaCost|ModWeaponReach|ModWeaponSpeed|ModWeight|MoveMouseX|MoveMouseY|MoveTextInputCursor|NameIncludes|NumToHex|OffersApparatus|OffersArmor|OffersBooks|OffersClothing|OffersIngredients|OffersLights|OffersMagicItems|OffersMiscItems|OffersPotions|OffersRecharging|OffersRepair|OffersServicesC|OffersSpells|OffersTraining|OffersWeapons|OnControlDown)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(OnKeyDown|OpenTextInput|OutputLocalMapPicturesOverride|ParentCellHasWater|PathEdgeExists|PlayIdle|Pow|Print|PrintActiveTileInfo|PrintC|PrintD|PrintTileInfo|PrintToConsole|QuestExists|Rand|Rcos|RefreshControlMap|RefreshCurrentClimate|ReleaseKey|RemoveAllEffectItems|RemoveBaseSpell|RemoveEnchantment|RemoveEquippedWeaponPoison|RemoveEventHandler|RemoveFromLeveledList)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(RemoveItemNS|RemoveLevItemByLevel|RemoveMeIR|RemoveModLocalData|RemoveNthEffectItem|RemoveNthLevItem|RemoveNthMagicEffectCounter|RemoveNthMagicEffectCounterC|RemoveScript|RemoveSpellNS|ResetAllVariables|ResolveModIndex|RestoreIP|RightShift|Rsin|RunBatchScript|RunScriptLine|SaveIP|SetActiveQuest|SetActorRespawns|SetActorValueC|SetAltControl|SetApparatusType|SetArmorAR|SetArmorType)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetArrowProjectileBowEnchantment|SetArrowProjectileEnchantment|SetArrowProjectilePoison|SetAttackDamage|SetAVMod|SetBaseForm|SetBipedIconPathEX|SetBipedModelPathEX|SetBipedSlotMask|SetBookCantBeTaken|SetBookIsScroll|SetBookSkillTaught|SetButtonPressed|SetCanCastPower|SetCanCorpseCheck|SetCanFastTravelFromWorld|SetCanTravelToMapMarker|SetCellBehavesAsExterior|SetCellClimate|SetCellHasWater|SetCellIsPublic|SetCellLighting|SetCellResetHours|SetCellWaterHeight|SetCellWaterType)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetChanceNone|SetClassAttribute|SetClassAttributeC|SetClassSkills|SetClassSkills2|SetClassSpecialization|SetClimateHasMasser|SetClimateHasSecunda|SetClimateMoonPhaseLength|SetClimateSunriseBegin|SetClimateSunriseEnd|SetClimateSunsetBegin|SetClimateSunsetEnd|SetClimateVolatility|SetCloseSound|SetCombatStyleAcrobaticsDodgeChance|SetCombatStyleAttackChance|SetCombatStyleAttackDuringBlockMult|SetCombatStyleAttackNotUnderAttackMult|SetCombatStyleAttackSkillModBase|SetCombatStyleAttackSkillModMult|SetCombatStyleAttackUnderAttackMult|SetCombatStyleBlockChance|SetCombatStyleBlockNotUnderAttackMult|SetCombatStyleBlockSkillModBase)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetCombatStyleBlockSkillModMult|SetCombatStyleBlockUnderAttackMult|SetCombatStyleBuffStandoffDist|SetCombatStyleDodgeBackNotUnderAttackMult|SetCombatStyleDodgeBackTimerMax|SetCombatStyleDodgeBackTimerMin|SetCombatStyleDodgeBackUnderAttackMult|SetCombatStyleDodgeChance|SetCombatStyleDodgeFatigueModBase|SetCombatStyleDodgeFatigueModMult|SetCombatStyleDodgeFWAttackingMult|SetCombatStyleDodgeFWNotAttackingMult|SetCombatStyleDodgeFWTimerMax|SetCombatStyleDodgeFWTimerMin|SetCombatStyleDodgeLRChance|SetCombatStyleDodgeLRTimerMax|SetCombatStyleDodgeLRTimerMin|SetCombatStyleDodgeNotUnderAttackMult|SetCombatStyleDodgeUnderAttackMult|SetCombatStyleEncumberedSpeedModBase|SetCombatStyleEncumberedSpeedModMult|SetCombatStyleFleeingDisabled|SetCombatStyleGroupStandoffDist|SetCombatStyleH2HBonusToAttack|SetCombatStyleHoldTimerMax)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetCombatStyleHoldTimerMin|SetCombatStyleIdleTimerMax|SetCombatStyleIdleTimerMin|SetCombatStyleIgnoreAlliesInArea|SetCombatStyleKOBonusToAttack|SetCombatStyleKOBonusToPowerAttack|SetCombatStyleMeleeAlertOK|SetCombatStylePowerAttackChance|SetCombatStylePowerAttackFatigueModBase|SetCombatStylePowerAttackFatigueModMult|SetCombatStylePrefersRanged|SetCombatStyleRangedStandoffDist|SetCombatStyleRangeMaxMult|SetCombatStyleRangeOptimalMult|SetCombatStyleRejectsYields|SetCombatStyleRushAttackChance|SetCombatStyleRushAttackDistMult|SetCombatStyleStaggerBonusToAttack|SetCombatStyleStaggerBonusToPowerAttack|SetCombatStyleSwitchDistMelee|SetCombatStyleSwitchDistRanged|SetCombatStyleWillYield|SetContainerRespawns|SetControl|SetCreatureSkill)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetCreatureSoundBase|SetCurrentCharge|SetCurrentHealth|SetCurrentSoulLevel|SetDebugMode|SetDescription|SetDetectionState|SetDisableGlobalCollision|SetDoorTeleport|SetEnchantment|SetEnchantmentCharge|SetEnchantmentCost|SetEnchantmentType|SetEquipmentSlot|SetEquippedCurrentCharge|SetEquippedCurrentHealth|SetEquippedWeaponPoison|SetEventHandler|SetEyes|SetFactionEvil|SetFactionHasSpecialCombat|SetFactionHidden|SetFactionSpecialCombat|SetFemale|SetFemaleBipedPath)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetFemaleGroundPath|SetFemaleIconPath|SetFunctionValue|SetGameDifficulty|SetGoldValue|SetGoldValue_T|SetHair|SetHarvested|SetHasBeenPickedUp|SetHidesAmulet|SetHidesRings|SetHotKeyItem|SetIconPath|SetIconPathEX|SetIgnoresResistance|SetIngredient|SetIngredientChance|SetInputText|SetIsAutomaticDoor|SetIsControl|SetIsFood|SetIsHiddenDoor|SetIsMinimalUseDoor|SetIsOblivionGate|SetIsPlayable)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetLightDuration|SetLightRadius|SetLightRGB|SetLocalGravity|SetLocalGravityVector|SetLoopSound|SetLowLevelProcessing|SetMagicEffectAreaSound|SetMagicEffectAreaSoundC|SetMagicEffectBarterFactor|SetMagicEffectBarterFactorC|SetMagicEffectBaseCost|SetMagicEffectBaseCostC|SetMagicEffectBoltSound|SetMagicEffectBoltSoundC|SetMagicEffectCanRecover|SetMagicEffectCanRecoverC|SetMagicEffectCastingSound|SetMagicEffectCastingSoundC|SetMagicEffectCounters|SetMagicEffectCountersC|SetMagicEffectEnchantFactor|SetMagicEffectEnchantFactorC|SetMagicEffectEnchantShader|SetMagicEffectEnchantShaderC)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetMagicEffectForEnchanting|SetMagicEffectForEnchantingC|SetMagicEffectForSpellmaking|SetMagicEffectForSpellmakingC|SetMagicEffectFXPersists|SetMagicEffectFXPersistsC|SetMagicEffectHitShader|SetMagicEffectHitShaderC|SetMagicEffectHitSound|SetMagicEffectHitSoundC|SetMagicEffectIcon|SetMagicEffectIconC|SetMagicEffectIsDetrimental|SetMagicEffectIsDetrimentalC|SetMagicEffectIsHostile|SetMagicEffectIsHostileC|SetMagicEffectLight|SetMagicEffectLightC|SetMagicEffectMagnitudePercent|SetMagicEffectMagnitudePercentC|SetMagicEffectModel|SetMagicEffectModelC|SetMagicEffectName|SetMagicEffectNameC|SetMagicEffectNoArea)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetMagicEffectNoAreaC|SetMagicEffectNoDuration|SetMagicEffectNoDurationC|SetMagicEffectNoHitEffect|SetMagicEffectNoHitEffectC|SetMagicEffectNoIngredient|SetMagicEffectNoIngredientC|SetMagicEffectNoMagnitude|SetMagicEffectNoMagnitudeC|SetMagicEffectOnSelfAllowed|SetMagicEffectOnSelfAllowedC|SetMagicEffectOnTargetAllowed|SetMagicEffectOnTargetAllowedC|SetMagicEffectOnTouchAllowed|SetMagicEffectOnTouchAllowedC|SetMagicEffectOtherActorValue|SetMagicEffectOtherActorValueC|SetMagicEffectProjectileSpeed|SetMagicEffectProjectileSpeedC|SetMagicEffectResistValue|SetMagicEffectResistValueC|SetMagicEffectSchool|SetMagicEffectSchoolC|SetMagicEffectUsedObject|SetMagicEffectUsedObjectC)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetMagicEffectUsesActorValue|SetMagicEffectUsesActorValueC|SetMagicEffectUsesArmor|SetMagicEffectUsesArmorC|SetMagicEffectUsesAttribute|SetMagicEffectUsesAttributeC|SetMagicEffectUsesCreature|SetMagicEffectUsesCreatureC|SetMagicEffectUsesSkill|SetMagicEffectUsesSkillC|SetMagicEffectUsesWeapon|SetMagicEffectUsesWeaponC|SetMagicItemAutoCalc|SetMagicProjectileSpell|SetMaleBipedPath|SetMaleGroundPath|SetMaleIconPath|SetMapMarkerType|SetMapMarkerVisible|SetMenuFloatValue|SetMenuStringValue|SetMerchantContainer|SetMessageIcon|SetMessageSound|SetModelPath)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetModelPathEX|SetModLocalData|SetMouseSpeedX|SetMouseSpeedY|SetName|SetNameEx|SetNoPersuasion|SetNthActiveEffectMagnitude|SetNthEffectItemActorValue|SetNthEffectItemActorValueC|SetNthEffectItemArea|SetNthEffectItemDuration|SetNthEffectItemMagnitude|SetNthEffectItemRange|SetNthEffectItemScript|SetNthEffectItemScriptHostile|SetNthEffectItemScriptName|SetNthEffectItemScriptNameEX|SetNthEffectItemScriptSchool|SetNthEffectItemScriptVisualEffect|SetNthEffectItemScriptVisualEffectC|SetNthFactionRankNameEX|SetNumericGameSetting|SetNumericINISetting|SetObjectCharge)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetObjectHealth|SetOffersApparatus|SetOffersArmor|SetOffersBooks|SetOffersClothing|SetOffersIngredients|SetOffersLights|SetOffersMagicItems|SetOffersMiscItems|SetOffersPotions|SetOffersRecharging|SetOffersRepair|SetOffersServicesC|SetOffersSpells|SetOffersTraining|SetOffersWeapons|SetOLMPGrids|SetOpenKey|SetOpenSound|SetOwnership_T|SetPackageAllowFalls|SetPackageAllowSwimming|SetPackageAlwaysRun|SetPackageAlwaysSneak|SetPackageArmorUnequipped)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetPackageContinueIfPCNear|SetPackageData|SetPackageDefensiveCombat|SetPackageLocationData|SetPackageLockDoorsAtEnd|SetPackageLockDoorsAtLocation|SetPackageLockDoorsAtStart|SetPackageMustComplete|SetPackageMustReachLocation|SetPackageNoIdleAnims|SetPackageOffersServices|SetPackageOncePerDay|SetPackageScheduleData|SetPackageSkipFalloutBehavior|SetPackageTarget|SetPackageTargetData|SetPackageUnlockDoorsAtEnd|SetPackageUnlockDoorsAtLocation|SetPackageUnlockDoorsAtStart|SetPackageUseHorse|SetPackageWeaponsUnequipped|SetPathNodeDisabled|SetPCAMurderer|SetPCAttributeBonus|SetPCAttributeBonusC)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetPCLevelOffset|SetPCMajorSkillUps|SetPCTrainingSessionsUsed|SetPlayerBirthsign|SetPlayerProjectile|Setplayerskeletonpath|SetPlayerSkillAdvances|SetPlayerSkillAdvancesC|SetPlayersLastRiddenHorse|SetPos_T|SetPowerTimer|SetProjectileSource|SetProjectileSpeed|SetQuality|SetQuestItem|SetRaceAlias|SetRacePlayable|SetRaceScale|SetRaceVoice|SetRaceWeight|SetRefCount|SetRefEssential|SetScaleEX|SetScript|SetSigilStoneUses)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetSkillGoverningAttribute|SetSkillGoverningAttributeC|SetSkillSpecialization|SetSkillUseIncrement|SetSkillUseIncrementC|SetSoulGemCapacity|SetSoulLevel|SetSpellAreaEffectIgnoresLOS|SetSpellDisallowAbsorbReflect|SetSpellExplodesWithNoTarget|SetSpellHostile|SetSpellImmuneToSilence|SetSpellMagickaCost|SetSpellMasteryLevel|SetSpellPCStart|SetSpellScriptEffectAlwaysApplies|SetSpellType|SetStringGameSettingEX|SetStringINISetting|SetSummonable|SetTextInputControlHandler|SetTextInputDefaultControlsDisabled|SetTexturePath|SetTimeLeft|SetTrainerLevel)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(SetTrainerSkill|SetTravelHorse|SetVelocity|SetVerticalVelocity|SetWeaponReach|SetWeaponSpeed|SetWeaponType|SetWeatherCloudSpeedLower|SetWeatherCloudSpeedUpper|SetWeatherColor|SetWeatherFogDayFar|SetWeatherFogDayNear|SetWeatherFogNightFar|SetWeatherFogNightNear|SetWeatherHDRValue|SetWeatherLightningFrequency|SetWeatherSunDamage|SetWeatherSunGlare|SetWeatherTransDelta|SetWeatherWindSpeed|SetWeight|Sin|Sinh|SquareRoot|StringToActorValue)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(Sv_Compare|Sv_Construct|Sv_Count|Sv_Destruct|Sv_Erase|Sv_Find|Sv_GetChar|Sv_Insert|Sv_Length|Sv_Percentify|Sv_Replace|Sv_Set|Sv_Split|Sv_Substring|Sv_ToNumeric|Tan|Tanh|TapControl|TapKey|TestExpr|ToggleCreatureModel|ToggleFirstPerson|ToggleSkillPerk|ToggleSpecialAnim|ToLower)\\b"
+				},
+				{
+					"name": "support.function.obscript",
+					"match": "(?i)\\b(ToNumber|ToString|ToUpper|TriggerPlayerSkillUse|TriggerPlayerSkillUseC|TypeOf|UncompleteQuest|UnequipItemNS|UnequipItemSilent|UnequipMe|UnHammerKey|Update3D|UpdateTextInput|VectorCross|VectorDot|VectorMagnitude|VectorNormalize)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.obscript",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.obscript",
+					"match": "%({|}|([+-0 ]{0,4}(\\d?.\\d?)?[abBcefgiknpqrvxz]))"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric",
+					"match": "[0-9]*\\.?[0-9]+"
+				}
+			]
+		}
+	},
+	"scopeName": "source.obscript"
+}
