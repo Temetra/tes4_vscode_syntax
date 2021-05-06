@@ -20,6 +20,7 @@
 		"oblivion"
 	],
 	"author": "Temetra <temetra.xy+git@gmail.com>",
+    "publisher": "Temetra",
 	"license": "MIT",
 	"icon": "images/logo.png",
     "contributes": {
