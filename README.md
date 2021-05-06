@@ -2,7 +2,7 @@
 
 This extension provides a TextMate grammar for the scripting language used in The Elder Scrolls IV: Oblivion (Obscript).
 
-![](images/example.png)
+![](https://raw.githubusercontent.com/Temetra/tes4_vscode_syntax/main/images/example.png)
 
 ## Features
 
